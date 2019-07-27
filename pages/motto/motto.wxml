@@ -1,0 +1,16 @@
+<view class="container">
+    <image src="../../imgs/DLOGO.png" mode="widthFix" />
+    <view class="input-block">
+        <form bindsubmit="submitMotto">
+            <view class="motto-input">
+                <textarea name="motto" maxlength="15" placeholder="登高山务攻绝顶，赏大雪莫畏严寒" placeholder-class="input-placeholder" name="motto" bindinput='limit' value="{{text}}" style="font-size: 14px;"></textarea>
+                <view class="clear">
+                    <text style="color: #d5d5d5; font-size: 28rpx; float: right; margin-right: 2%;">
+                        {{current}} / {{max}} （最多可写15字）
+                    </text>
+                </view>
+            </view>
+            <button class="submit" form-type="submit">提交</button>
+        </form>
+    </view>
+</view>

@@ -1,0 +1,46 @@
+<view class="container">
+    <block wx:for="{{planList}}" wx:key="{{index}}">
+        <view class="futurePlan" wx:if="{{num[index] >= 0}}" bind:longpress="deleteFuture" data-id="{{item.id}}">
+            <view class="top">
+                <view class="block_white">
+                    <view class="white_1">{{bai[index]}}</view>
+                    <view class="white_2">{{shi[index]}}</view>
+                    <view class="white_3">{{ge[index]}}</view>
+                </view>
+                <image src="../../imgs/futuredays.png" />
+            </view>
+            <view class="bottom">
+                <view class="title">{{item.title}}</view>
+                <view class="text">{{item.plan}}</view>
+                <view class="date">{{item.date}}</view>
+            </view>
+        </view>
+    </block>
+</view>
+<view wx:if="{{item == '0'}}">
+    <view class="noneFuture">
+        <image src="../../imgs/11.png" />
+        还没有计划，点击右下角添加一个吧~
+    </view>
+</view>
+<!-- 脱离文档流部分 -->
+<view class="expand" bind:tap="expandList">
+    <image mode="widthFix" animation="{{rotate}}" src="../../imgs/kuo1.png" style="width:80rpx;height:80rpx" />
+</view>
+<view class="{{expandHide}}" catch:touchmove="true"></view>
+<view class="add_future {{none}}" animation="{{opacity}}">
+    <form catchsubmit="sendFuture">
+        <view class="top">
+            <p>添加未来计划</p>
+        </view>
+        <view class="daka_bottom">
+            <input value="{{msg}}" name="title" placeholder="请输入计划名称" placeholder-class="input-placeholder" />
+            <input value="{{msg}}" name="plan" placeholder="请输入计划描述" placeholder-class="input-placeholder" />
+            <!-- 这里的today是今天的基础上加三天 -->
+            <picker mode="date" value="{{check}}" start="{{today}}" end="2024-1-1" fields='day' bindchange="bindDateChange">
+                <input disabled="{{true}}" class="set_date" name="future_date" placeholder="设定日期：xx-xx-xx" placeholder-class="green-placeholder" value="{{check}}" />
+            </picker>
+            <button form-type="submit">提交</button>
+        </view>
+    </form>
+</view>

@@ -1,0 +1,41 @@
+<view class="con_block">
+    <view class="bg">
+        <image src="{{avatarUrl}}" />
+    </view>
+</view>
+<swiper class="information" indicator-dots="{{true}}" indicator-color="#868782" indicator-active-color="#e2e2e1" duration="300">
+    <swiper-item>
+        <view class="block_top">
+            <view class="topImg">
+                <image src="{{avatarUrl}}" />
+            </view>
+            <p class="name">{{nickName}}</p>
+        </view>
+    </swiper-item>
+    <swiper-item>
+        <view class="block">
+            <view>连续打卡{{num}}天</view>
+            <view>累计打卡{{study_days}}天</view>
+        </view>
+    </swiper-item>
+</swiper>
+<view class="detail">
+    <view class="week">
+        <p class="title">Week</p>
+        <p class="finish">已完成/已创建：{{w_matters_finish}}/{{w_matters_count}}</p>
+        <p class="study_time">累计学习时长：{{w_study_time}}</p>
+    </view>
+    <view class="month">
+        <p class="title">Month</p>
+        <p class="finish">已完成/已创建：{{m_matters_finish}}/{{m_matters_count}}</p>
+        <p class="study_time">累计学习时长：{{m_study_time}}</p>
+    </view>
+</view>
+<navigator url="../feedback/feedback" hover-class="none">
+    <view class="feedBack">
+        <p>反馈</p>
+        <view class="arrow">
+            <image src="../../imgs/icon-right.png" />
+        </view>
+    </view>
+</navigator>

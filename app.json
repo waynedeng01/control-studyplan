@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/feedback/feedback",
+    "pages/login/login",
+    "pages/my/my",
+    "pages/rank/rank",
+    "pages/future/future",
+    "pages/motto/motto",
+    "pages/countdown/countdown",
+    "pages/detail/detail"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#3d444d",
+    "navigationBarTitleText": "Control学习计划",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#d2d2d2",
+    "selectedColor": "#000",
+    "borderStyle": "black",
+    "backgroundColor": "#fefefe",
+    "list": [
+      {
+        "selectedIconPath": "imgs/daiban2.png",
+        "iconPath": "imgs/daiban1.png",
+        "pagePath": "pages/index/index",
+        "text": "待办"
+      },
+      {
+        "selectedIconPath": "imgs/weilai2.png",
+        "iconPath": "imgs/weilai1.png",
+        "pagePath": "pages/future/future",
+        "text": "未来"
+      },
+      {
+        "selectedIconPath": "imgs/paihang2.png",
+        "iconPath": "imgs/paihang1.png",
+        "pagePath": "pages/rank/rank",
+        "text": "排行"
+      },
+      {
+        "selectedIconPath": "imgs/my2.png",
+        "iconPath": "imgs/my1.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

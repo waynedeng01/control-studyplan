@@ -1,0 +1,18 @@
+<view class="container">
+    <form bindsubmit="submitContent">
+        <p>请选择反馈类型</p>
+        <view class="category">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <label class="radio" wx:for="{{items}}" wx:key="{{index}}">
+                    <radio value="{{item.name}}" checked="{{item.checked}}" color="#3caa9a" />
+                    {{item.value}}
+                </label>
+            </radio-group>
+        </view>
+        <p>请填写反馈内容</p>
+        <view class="content">
+            <textarea name="content" maxlength="40" placeholder="请把你想说的告诉我们吧！" placeholder-class="input-placeholder" value="{{text}}" style="font-size: 28rpx;"></textarea>
+        </view>
+        <button class="submit" form-type="submit">提交</button>
+    </form>
+</view>

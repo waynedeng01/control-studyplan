@@ -1,0 +1,58 @@
+<view class="container">
+    <view class="top">
+        <navigator url="../detail/detail" hover-class="none">
+            <view class="topImg">
+                <image src="{{avatarUrl}}" />
+            </view>
+        </navigator>
+        <view class="block">
+            <view class="t_block">
+                <view class="name">{{nickName}}</view>
+                <view class="hadStudy">连续打卡{{study_days}}天</view>
+            </view>
+            <view class="motto">
+                <navigator url="../motto/motto" hover-class="none">
+                    {{motto}}
+                    <image src="../../imgs/icon-pen.png" mode="widthFix" class="pen" />
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="daka">
+        <view class="title">打卡记录</view>
+        <view class='month flex m-around'>
+            <view class='year-and-month'>
+                <picker mode="date" value="{{date}}" start="2018-09" end="2020-09" fields='month' bindchange="bindDateChange">
+                    <view>{{date}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class='calendar flex column s-center'>
+            <view class='week-row flex m-around'>
+                <view class='grid' wx:for="{{week}}" wx:key='item'>{{item}}</view>
+            </view>
+            <swiper class='swpier-box' circular="true" current="{{swiperIndex}}" bindchange='swiperChange'>
+                <swiper-item class='flex m-around days-table '>
+                    <view wx:for="{{calendar.first}}" wx:for-item='x' wx:key='x.date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.isSign == true ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}'>
+                        <view>{{x.date == today?'今天':x.day}}</view>
+                    </view>
+                </swiper-item>
+                <swiper-item class='flex m-around days-table '>
+                    <view wx:for="{{calendar.second}}" wx:for-item='x' wx:key='x.date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.isSign == true  ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' data-test='{{(year + "-" +month + "-" + day)}}'>
+                        <view>{{x.date == today?'今天':x.day}}</view>
+                    </view>
+                </swiper-item>
+                <swiper-item class='flex m-around days-table'>
+                    <view wx:for="{{calendar.third}}" wx:for-item='x' wx:key='x.date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.isSign == true  ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}'>
+                        <view>{{x.date == today?'今天':x.day}}</view>
+                    </view>
+                </swiper-item>
+                <swiper-item class='flex m-around days-table '>
+                    <view wx:for="{{calendar.fourth}}" wx:for-item='x' wx:key='x.date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.isSign == true  ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}'>
+                        <view>{{x.date == today?'今天':x.day}}</view>
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+</view>

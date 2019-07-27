@@ -1,0 +1,215 @@
+.top {
+    height: 200rpx;
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.topImg image {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+}
+
+.block {
+    height: 120rpx;
+    width: 320rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.t_block {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.name {
+    width: 40%;
+    font-weight: 700;
+    font-size: 40rpx;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+
+.pen {
+    width: 28rpx;
+    height: 28rpx;
+    float: right;
+}
+
+.hadStudy {
+    width: 160rpx;
+    height: 40rpx;
+    color: #ffffff;
+    background: #3caa9a;
+    font-size: 20rpx;
+    text-align: center;
+    line-height: 40rpx;
+    border-radius: 10px;
+}
+
+.motto {
+    color: #cccccc;
+    height: 40rpx;
+    font-size: 28rpx;
+}
+
+
+/* 打卡记录部分 */
+
+.daka {
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.daka .title {
+    width: 90%;
+    height: 50rpx;
+    background: #3caa9a;
+    color: white;
+    font-size: 28rpx;
+    line-height: 50rpx;
+    text-indent: 10rpx;
+    margin: 0 auto;
+    box-shadow: 0px 2px 5px #aaaaaa;
+}
+
+.body-view {
+    height: 0;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.days-table {
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.calendar {
+    width: 90%;
+    z-index: 10000;
+    /* background: #f8f6f1; */
+    border: 1px solid #86cac0;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+.week-row {
+    width: 100%;
+}
+
+.grid {
+    width: 90rpx;
+    height: 90rpx;
+    text-align: center;
+    line-height: 90rpx;
+    font-size: .7rem;
+    color: #3d4150;
+    /* position: relative; */
+}
+
+.today {
+    color: #3caa9a;
+}
+
+.grid view {
+    margin: 0 auto;
+    height: 60rpx;
+    line-height: 60rpx;
+    width: 60rpx;
+}
+
+/* 已经打卡 */
+
+.choice view {
+    /* width: 85rpx;
+    height: 85rpx; */
+    border-radius: 50%;
+    background: #3caa9a;
+    background-position: center;
+    color: white;
+}
+
+/* 非本月日期 */
+
+.notCurrent {
+    /* color: silver; */
+    visibility: hidden;
+}
+
+.swpier-box {
+    height: 550rpx;
+    width: 100%;
+}
+
+.arrow {
+    width: 100rpx;
+    color: #3caa9a;
+    text-align: center;
+}
+
+.year-and-month {
+    color: #3caa9a;
+    margin: 20rpx 0;
+}
+
+.flex {
+    display: flex;
+}
+
+/* 轴向 */
+
+.column {
+    flex-direction: column;
+}
+
+/* 主轴方向 */
+
+.m-start {
+    justify-content: flex-start;
+}
+
+.m-end {
+    justify-content: flex-end;
+}
+
+.m-around {
+    justify-content: space-around;
+}
+
+.m-between {
+    justify-content: space-between;
+}
+
+.m-center {
+    justify-content: center;
+}
+
+/* 侧轴方向 */
+
+.s-start {
+    align-items: flex-start;
+}
+
+.s-end {
+    align-items: flex-end;
+}
+
+.s-around {
+    align-items: space-around;
+}
+
+.s-between {
+    align-items: space-between;
+}
+
+.s-center {
+    align-items: center;
+}

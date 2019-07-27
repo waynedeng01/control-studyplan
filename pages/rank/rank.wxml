@@ -1,0 +1,29 @@
+<view class="container">
+    <block wx:for="{{rankList}}" wx:key="{{index}}">
+        <view class="rank">
+            <view class="rank_l">
+                <image class="rank_img" src="{{rankImg[index]}}" mode="widthFix" style="width : 40rpx ; height : 60rpx" />
+                <view class="l_block">
+                    <view class="top">
+                        <view class="name">{{item.user.name}}</view>
+                    </view>
+                    <view class="bottom">
+                        <image src="../../imgs/zhong.png" style="width:30rpx;height:30rpx" />
+                        {{min[index]}}分钟
+                        <view class="num">连续打卡{{item.user.num}}天</view>
+                    </view>
+                </view>
+            </view>
+            <view class="rank_r">
+                <image src="{{item.user.img_url}}" style="width : 80rpx ; height : 80rpx" />
+            </view>
+        </view>
+    </block>
+</view>
+<view class="fixTop">
+    <view class="block">
+        <view class="timeRank {{t_rank}}" catch:tap="timeRank">时间排序</view>
+        <view class="dakaRank {{d_rank}}" catch:tap="dakaRank">打卡排序</view>
+    </view>
+</view>
+<view class="rankNone" wx:if="{{item == '0'}}">今日暂无排行数据，赶快学习起来争夺榜首吧！</view>

@@ -1,0 +1,127 @@
+.fixTop {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 120rpx;
+    border-bottom: 1px dashed #3caa9a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+    /* line-height: 120rpx; */
+}
+
+.fixTop .block {
+    width: 360rpx;
+    height: 50rpx;
+    border: 1px solid #3caa9a;
+    display: flex;
+}
+
+.choice {
+    background: #3caa9a!important;
+    color: white!important;
+}
+
+.unchoice {
+    background: white!important;
+    color: #3caa9a!important;
+}
+
+.timeRank {
+    width: 180rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    background: #3caa9a;
+    color: white;
+}
+
+.dakaRank {
+    width: 180rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    background: white;
+    color: #3caa9a;
+}
+
+.container {
+    margin-top: 120rpx;
+    height: 100%;
+}
+
+.rank {
+    width: 90%;
+    height: 120rpx;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.rank_l {
+    display: flex;
+    align-items: center;
+}
+
+.l_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.rank_img {
+    margin-right: 40rpx;
+}
+
+.rank_l .top {
+    height: 42rpx;
+    font-size: 32rpx;
+    color: black;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.rank_l .bottom {
+    font-size: 24rpx;
+    color: #cacaca;
+    display: flex;
+    align-items: center;
+    margin-top: 20rpx;
+}
+
+.rank_l .bottom image {
+    margin-right: 20rpx;
+}
+
+.rank_r image {
+    border-radius: 50%;
+}
+
+.rankNone {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    color: #ccc;
+    background-color: #fff;
+    font-size: 32rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.num {
+    width: 160rpx;
+    height: 40rpx;
+    color: #ffffff;
+    background: #3caa9a;
+    font-size: 20rpx;
+    text-align: center;
+    line-height: 40rpx;
+    border-radius: 5px;
+    margin-left: 20rpx;
+}

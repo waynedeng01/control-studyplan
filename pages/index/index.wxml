@@ -1,0 +1,165 @@
+<view>
+  <view class="container" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <view class="calendar_block" style="height:{{blockHeight==='250rpx'?'960rpx':'250rpx'}}" animation="{{animation}}">
+      <view class="calendar_top">
+        <image src="../../imgs/rili.png" mode="widthFix" />
+        <view class="calendar_date">
+          <p>{{time}}</p>
+          <view class="calendar_done">{{beSelectDate == today?"今日":"该日"}}学习{{studyTime}}</view>
+        </view>
+      </view>
+      <!-- 日历隐藏的部分及展开的按钮 -->
+      <view class="calendar_hide">
+        <button bind:tap="changeFlag">
+          <image src="../../imgs/icon-down.png" mode="widthFix" />
+        </button>
+        <view class="body-view" animation="{{animation}}">
+          <view class='container'>
+            <view class='month flex m-around'>
+              <view class='arrow' bindtap='prevMonth'>
+                <image src="../../imgs/icon-left.png" style="width:45rpx;height:45rpx" />
+              </view>
+              <view class='year-and-month'>
+                <picker mode="date" value="{{date}}" start="2018-09" end="2020-09" fields='month' bindchange="bindDateChange">
+                  <view>{{date}}</view>
+                </picker>
+              </view>
+              <view class='arrow' bindtap='nextMonth'>
+                <image src="../../imgs/icon-right.png" style="width:45rpx;height:45rpx" />
+              </view>
+            </view>
+            <view class='calendar flex column s-center'>
+              <view class='week-row flex m-around'>
+                <view class='grid' wx:for="{{week}}" wx:key='item'>{{item}}</view>
+              </view>
+              <swiper class='swpier-box' circular="true" current="{{swiperIndex}}" bindchange='swiperChange'>
+                <swiper-item class='flex m-around days-table '>
+                  <view wx:for="{{calendar.first}}" wx:for-item='x' wx:key='x.date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>
+                    <view>{{x.date === today?'今天':x.day}}</view>
+                  </view>
+                </swiper-item>
+                <swiper-item class='flex m-around days-table '>
+                  <view wx:for="{{calendar.second}}" wx:for-item='x' wx:key='x.date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' data-test='{{(year + "-" +month + "-" + day)}}' bindtap='bindDayTap'>
+                    <view>{{x.date === today?'今天':x.day}}</view>
+                  </view>
+                </swiper-item>
+                <swiper-item class='flex m-around days-table'>
+                  <view wx:for="{{calendar.third}}" wx:for-item='x' wx:key='x.date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>
+                    <view>{{x.date === today?'今天':x.day}}</view>
+                  </view>
+                </swiper-item>
+                <swiper-item class='flex m-around days-table '>
+                  <view wx:for="{{calendar.fourth}}" wx:for-item='x' wx:key='x.date' class='grid {{x.month === month?"":"notCurrent"}} {{x.date === today?"today":""}} {{x.date == beSelectDate ? "choice":""}}' data-month='{{x.month}}' data-day='{{x.day}}' data-date='{{x.date}}' bindtap='bindDayTap'>
+                    <view>{{x.date === today?'今天':x.day}}</view>
+                  </view>
+                </swiper-item>
+              </swiper>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{item == '0'&& beSelectDate >= today}}">
+      <view class="nonedaiban">
+        <image src="../../imgs/11.png" />
+        还没有任务，点击右下角添加一个吧~
+      </view>
+    </view>
+    <view class="rankNone" wx:if="{{item == '0'&& beSelectDate < today}}">该日并没有待办事项的记录哦</view>
+    <!-- 待办部分开始 -->
+    <view wx:else>
+      <scroll-view class="scro" scroll-y="{{true}}" bindscrolltoupper="topper"  style="height:{{scroll_height}}rpx">
+        <block wx:for="{{daibanList}}" wx:key="{{index}}">
+          <view class="daiban" bind:longpress="deleteDaiban" data-id="{{item.id}}">
+            <view class="daiban_l">
+              <p class="top  {{item.status == '0'?'':'disabled'}}">{{item.target}}</p>
+              <p wx:if="{{item.timing == '0'}}" class="bottom">
+                <image src="../../imgs/zhong.png" style="width:30rpx;height:30rpx" />
+                {{item.duration/60}}分钟
+              </p>
+              <p class="count" wx:if="{{item.timing == '1'}}">正向计时</p>
+            </view>
+            <view class="daiban_r {{beSelectDate === today?'':'none'}} {{item.status == '0'?'':'none'}}">
+              <navigator url="../countdown/countdown" hover-class="none">
+                <image src="{{item.img.img_url}}" style="width : 80rpx ; height : 80rpx" bind:tap="startCount" data-timing="{{item.timing}}" data-id="{{item.id}}" data-duration="{{item.duration}}" data-target="{{item.target}}" />
+              </navigator>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+  <!-- 打卡界面出现 -->
+  <view wx:if="{{flag == '1'}}" class="finished" catch:touchmove="true">
+    <view class="top">
+      <image src="../../imgs/DLOgo.png" mode="widthFix" />
+    </view>
+    <view class="bottom">
+      <p>今日学习任务已完成</p>
+      <button bind:tap="finished">打卡~</button>
+    </view>
+  </view>
+  <!-- 跟随出现的遮罩层 -->
+  <view wx:if="{{flag == '1'}}" class="bigIndex" catch:touchmove="true"></view>
+  <!-- 脱离文档流的扩展选项 -->
+  <view wx:if="{{beSelectDate >= today}}" class="expand" bind:tap="expandList">
+    <view class="exList {{exp}}">
+      <view class="ex_block" animation="{{opacity}}" catch:tap="setDaka">
+        <p>设置打卡</p>
+        <image class="setting" src="../../imgs/shedaka.png" style="width:80rpx;height:80rpx" />
+      </view>
+      <view class="ex_block {{exp}}" animation="{{opacity}}" catch:tap="setDaiban">
+        <p>添加待办</p>
+        <image class="add" src="../../imgs/tiandaiban.png" style="width:80rpx;height:80rpx" />
+      </view>
+    </view>
+    <image mode="widthFix" animation="{{rotate}}" src="../../imgs/kuo1.png" style="width:80rpx;height:80rpx" />
+  </view>
+  <!-- 通用遮罩层 -->
+  <view class="{{expandHide}}" catch:touchmove="true"></view>
+  <!-- 设置打卡 -->
+  <view class="set_daka {{none}}" animation="{{opacity}}">
+    <form bindsubmit="sendDaka">
+      <view class="top">
+        <p>设置打卡时间</p>
+        <image class="close" src="../../imgs/wrong.png" mode="aspectFit" catch:tap="dakaClose" />
+      </view>
+      <view class="daka_bottom">
+        <picker mode="time" value="{{daka_t}}" start="00:20" end="04:00" fields='month' bindchange="bindTimeChange">
+          <input name="input" placeholder="小时:分钟" value="{{daka_t}}" placeholder-class="input-placeholder" disabled="{{true}}" />
+        </picker>
+        <p>学满打卡时间即可解锁打卡(〃'▽'〃)</p>
+        <button form-type="submit">提交</button>
+      </view>
+    </form>
+  </view>
+  <!-- 添加待办 -->
+  <view class="add_daiban {{daiban_none}} " animation="{{opacity}}">
+    <form bindsubmit="addDaiban">
+      <view class="top">
+        <p>添加待办事项</p>
+        <image class="close" src="../../imgs/wrong.png" mode="aspectFit" catch:tap="daibanClose" />
+      </view>
+      <view class="daiban_bottom" animation="{{height}}">
+        <input value="{{msg}}" name="target" maxlength="16" placeholder="请输入待办事项名称" placeholder-class="input-placeholder" />
+        <view class="button_t">
+          <view class="count {{change_c}}" catch:tap="timing">正向计时</view>
+          <view class="count_reverse {{change_r}}" catch:tap="timingReverse">倒计时</view>
+        </view>
+        <view class="button_b" animation="{{bu_opacity}}">
+          <view class="10 {{change_10}}" catch:tap="ten">10分钟</view>
+          <view class="15 {{change_15}}" catch:tap="fifteen">15分钟</view>
+          <view class="25 {{change_25}}" catch:tap="t_five">25分钟</view>
+          <view class="45 {{change_45}}" catch:tap="f_five">45分钟</view>
+          <view class="60 {{change_60}}" hover-class="daiban_hover" hover-stay-time="100" catch:tap="sixty">
+            60分钟
+          </view>
+          <view class="unknow" catch:tap="unknow">
+            <input  name="s_time" type="number" placeholder="自定义" value="{{b_min}}" placeholder-class="input-placeholder" />
+          </view>
+        </view>
+        <button form-type="submit">提交</button>
+      </view>
+    </form>
+  </view>
+</view>

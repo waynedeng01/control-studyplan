@@ -1,0 +1,19 @@
+/**app.wxss**/
+
+.container {
+    padding-top: 20rpx;
+}
+
+
+.input-placeholder {
+    color: #d5d5d5;
+    font-size: 28rpx;
+}
+
+.green-placeholder {
+    color: #67b6aa;
+}
+
+button::after {
+    border: none;
+  }

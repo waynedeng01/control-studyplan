@@ -1,0 +1,9 @@
+<view class="zhezhao" catchtouchmove="ture"><image src="{{imgUrl}}" /></view>
+<view class="block">
+  <view class="motto">“{{motto}}”</view>
+  <view class="countCircle">{{countDown_hour}}:{{countDown_min}}:{{countDown_sec}}</view>
+  <view class="countText">
+    <p class="top">{{Ing}}</p>
+    <p class="bottom">正在进行中</p>
+  </view>
+</view>

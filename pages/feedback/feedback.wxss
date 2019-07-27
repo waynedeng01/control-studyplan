@@ -1,0 +1,53 @@
+.container {
+    margin-top: 40rpx;
+}
+
+.container p {
+    font-size: 32rpx;
+    color: #3caa9a;
+    margin: 40rpx 0 40rpx 20rpx;
+}
+
+.category {
+    width: 85%;
+    margin: 0 auto;
+    height: 80rpx;
+    /* flex-wrap: wrap; */
+    margin-top: 50rpx;
+}
+
+.category .radio {
+    height: 100%;
+    font-size: 28rpx;
+}
+
+.radio-group {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    /* align-content: flex-start; */
+    align-items: center;
+}
+
+.content {
+    width: 90%;
+    height: 400rpx;
+    margin: 0 auto;
+    margin-top: 40rpx;
+    border: 1px solid #3caa9a;
+}
+
+.content textarea {
+    width: 100%;
+    height: 100%;
+}
+
+.submit {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 40rpx;
+    background-color: #3caa9a;
+    color: white;
+    box-shadow: 0 4px 5px #ccc;
+}
